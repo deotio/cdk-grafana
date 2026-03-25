@@ -1,0 +1,972 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GrafanaInfraStack matches snapshot 1`] = `
+{
+  "Metadata": {
+    "cdk_nag": {
+      "rules_to_suppress": [
+        {
+          "applies_to": [
+            "Policy::arn:<AWS::Partition>:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+          ],
+          "id": "AwsSolutions-IAM4",
+          "is_reason_encoded": true,
+          "reason": "QVdTTGFtYmRhQmFzaWNFeGVjdXRpb25Sb2xlIG1hbmFnZWQgcG9saWN5IGlzIHVzZWQgYnkgQ0RLLW1hbmFnZWQgY3VzdG9tIHJlc291cmNlIExhbWJkYSDigJQgY2Fubm90IGJlIGNoYW5nZWQ=",
+        },
+        {
+          "id": "AwsSolutions-L1",
+          "is_reason_encoded": true,
+          "reason": "U2luZ2xldG9uIExhbWJkYSBydW50aW1lIGZvciBBd3NDdXN0b21SZXNvdXJjZSBpcyBtYW5hZ2VkIGJ5IENESyBmcmFtZXdvcmsg4oCUIGNhbm5vdCBiZSBjaGFuZ2Vk",
+        },
+      ],
+    },
+  },
+  "Outputs": {
+    "GitHubActionsRoleArn": {
+      "Description": "Add as AWS_ROLE_ARN secret in GitHub repository",
+      "Value": {
+        "Fn::GetAtt": [
+          "GitHubActionsRole4F1BBA26",
+          "Arn",
+        ],
+      },
+    },
+    "GrafanaEndpoint": {
+      "Description": "Grafana workspace URL",
+      "Value": {
+        "Fn::GetAtt": [
+          "GrafanaWorkspace5E61471A",
+          "Endpoint",
+        ],
+      },
+    },
+    "ServiceAccountTokenSecretArn": {
+      "Value": {
+        "Ref": "ServiceAccountTokenSecretF772D609",
+      },
+    },
+    "WorkspaceId": {
+      "Value": {
+        "Fn::GetAtt": [
+          "GrafanaWorkspace5E61471A",
+          "Id",
+        ],
+      },
+    },
+  },
+  "Parameters": {
+    "BootstrapVersion": {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
+  },
+  "Resources": {
+    "AWS679f53fac002430cb0da5b7982bd22872D164C4C": {
+      "DeletionPolicy": "Delete",
+      "DependsOn": [
+        "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
+      ],
+      "Properties": {
+        "Code": {
+          "S3Bucket": "cdk-hnb659fds-assets-123456789012-eu-central-1",
+          "S3Key": "56f7467bbde8a5efebcf57ae9e460027607099bab9f844669dcf5d800172ee5a.zip",
+        },
+        "Handler": "index.handler",
+        "Role": {
+          "Fn::GetAtt": [
+            "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs22.x",
+        "Tags": [
+          {
+            "Key": "Environment",
+            "Value": "prod",
+          },
+          {
+            "Key": "ManagedBy",
+            "Value": "CDK",
+          },
+          {
+            "Key": "Project",
+            "Value": "Grafana",
+          },
+        ],
+        "Timeout": 120,
+      },
+      "Type": "AWS::Lambda::Function",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+        "Tags": [
+          {
+            "Key": "Environment",
+            "Value": "prod",
+          },
+          {
+            "Key": "ManagedBy",
+            "Value": "CDK",
+          },
+          {
+            "Key": "Project",
+            "Value": "Grafana",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "CustomAWSCDKOpenIdConnectProviderCustomResourceProviderHandlerF2C543E0": {
+      "DeletionPolicy": "Delete",
+      "DependsOn": [
+        "CustomAWSCDKOpenIdConnectProviderCustomResourceProviderRole517FED65",
+      ],
+      "Properties": {
+        "Code": {
+          "S3Bucket": "cdk-hnb659fds-assets-123456789012-eu-central-1",
+          "S3Key": "d75c48c9f82cde63e9bf414df335e84e8ac24f11eb34889be255b702aec71e50.zip",
+        },
+        "Handler": "__entrypoint__.handler",
+        "MemorySize": 128,
+        "Role": {
+          "Fn::GetAtt": [
+            "CustomAWSCDKOpenIdConnectProviderCustomResourceProviderRole517FED65",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs22.x",
+        "Timeout": 900,
+      },
+      "Type": "AWS::Lambda::Function",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "CustomAWSCDKOpenIdConnectProviderCustomResourceProviderRole517FED65": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Sub": "arn:\${AWS::Partition}:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+          },
+        ],
+        "Policies": [
+          {
+            "PolicyDocument": {
+              "Statement": [
+                {
+                  "Action": [
+                    "iam:CreateOpenIDConnectProvider",
+                    "iam:DeleteOpenIDConnectProvider",
+                    "iam:UpdateOpenIDConnectProviderThumbprint",
+                    "iam:AddClientIDToOpenIDConnectProvider",
+                    "iam:RemoveClientIDFromOpenIDConnectProvider",
+                  ],
+                  "Effect": "Allow",
+                  "Resource": "*",
+                },
+              ],
+              "Version": "2012-10-17",
+            },
+            "PolicyName": "Inline",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "GitHubActionsRole4F1BBA26": {
+      "DeletionPolicy": "Delete",
+      "Metadata": {
+        "cdk_nag": {
+          "rules_to_suppress": [
+            {
+              "id": "AwsSolutions-IAM5",
+              "is_reason_encoded": true,
+              "reason": "R2l0SHViIEFjdGlvbnMgcm9sZSBuZWVkcyB0byBhc3N1bWUgYW55IENESyBib290c3RyYXAgcm9sZSAoY2RrLSopIGZvciBkZXBsb3ltZW50cyDigJQgdGhlc2UgYXJlIGNyZWF0ZWQgYnkgQ0RLIGJvb3RzdHJhcCBhbmQgZm9sbG93IGEgbmFtaW5nIGNvbnZlbnRpb24=",
+            },
+          ],
+        },
+      },
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRoleWithWebIdentity",
+              "Condition": {
+                "StringEquals": {
+                  "token.actions.githubusercontent.com:aud": "sts.amazonaws.com",
+                },
+                "StringLike": {
+                  "token.actions.githubusercontent.com:sub": "repo:testorg/test-grafana:*",
+                },
+              },
+              "Effect": "Allow",
+              "Principal": {
+                "Federated": {
+                  "Ref": "GitHubOidcA2A496A3",
+                },
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "Description": "Role assumed by GitHub Actions for CDK deployments",
+        "RoleName": "github-actions-grafana",
+        "Tags": [
+          {
+            "Key": "Environment",
+            "Value": "prod",
+          },
+          {
+            "Key": "ManagedBy",
+            "Value": "CDK",
+          },
+          {
+            "Key": "Project",
+            "Value": "Grafana",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "GitHubActionsRoleDefaultPolicy69DA0189": {
+      "DeletionPolicy": "Delete",
+      "Metadata": {
+        "cdk_nag": {
+          "rules_to_suppress": [
+            {
+              "id": "AwsSolutions-IAM5",
+              "is_reason_encoded": true,
+              "reason": "R2l0SHViIEFjdGlvbnMgcm9sZSBuZWVkcyB0byBhc3N1bWUgYW55IENESyBib290c3RyYXAgcm9sZSAoY2RrLSopIGZvciBkZXBsb3ltZW50cyDigJQgdGhlc2UgYXJlIGNyZWF0ZWQgYnkgQ0RLIGJvb3RzdHJhcCBhbmQgZm9sbG93IGEgbmFtaW5nIGNvbnZlbnRpb24=",
+            },
+          ],
+        },
+      },
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Resource": "arn:aws:iam::123456789012:role/cdk-*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "GitHubActionsRoleDefaultPolicy69DA0189",
+        "Roles": [
+          {
+            "Ref": "GitHubActionsRole4F1BBA26",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "GitHubOidcA2A496A3": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "ClientIDList": [
+          "sts.amazonaws.com",
+        ],
+        "CodeHash": "d75c48c9f82cde63e9bf414df335e84e8ac24f11eb34889be255b702aec71e50",
+        "RejectUnauthorized": false,
+        "ServiceToken": {
+          "Fn::GetAtt": [
+            "CustomAWSCDKOpenIdConnectProviderCustomResourceProviderHandlerF2C543E0",
+            "Arn",
+          ],
+        },
+        "ThumbprintList": [
+          "6938fd4d98bab03faadb97b34396831e3780aea1",
+          "1c58a3a8518e8759bf075b76b750d4f2df264fcd",
+        ],
+        "Url": "https://token.actions.githubusercontent.com",
+      },
+      "Type": "Custom::AWSCDKOpenIdConnectProvider",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "GrafanaWorkspace5E61471A": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "AccountAccessType": "CURRENT_ACCOUNT",
+        "AuthenticationProviders": [
+          "AWS_SSO",
+        ],
+        "GrafanaVersion": "10.4",
+        "Name": "test-grafana-workspace",
+        "NotificationDestinations": [
+          "SNS",
+        ],
+        "PermissionType": "SERVICE_MANAGED",
+        "PluginAdminEnabled": true,
+        "RoleArn": {
+          "Fn::GetAtt": [
+            "GrafanaWorkspaceServiceRoleCB4A19E2",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "AWS::Grafana::Workspace",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "GrafanaWorkspaceAssumeCloudWatchRolesFC85B7F6": {
+      "DeletionPolicy": "Delete",
+      "Metadata": {
+        "cdk_nag": {
+          "rules_to_suppress": [
+            {
+              "id": "AwsSolutions-IAM5",
+              "is_reason_encoded": true,
+              "reason": "R3JhZmFuYSBuZWVkcyB0byBhc3N1bWUgQ2xvdWRXYXRjaCByb2xlcyBpbiBhbnkgb3JnIGFjY291bnQg4oCUIHNjb3BlZCBieSBuYW1pbmcgY29udmVudGlvbiAoKkdyYWZhbmFDVyopIGFuZCBvcmcgY29uZGl0aW9u",
+            },
+          ],
+        },
+      },
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Condition": {
+                "StringEquals": {
+                  "aws:PrincipalOrgID": "o-testorg123",
+                },
+              },
+              "Effect": "Allow",
+              "Resource": "arn:aws:iam::*:role/*GrafanaCW*",
+              "Sid": "AssumeProjectCloudWatchRoles",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "GrafanaWorkspaceAssumeCloudWatchRolesFC85B7F6",
+        "Roles": [
+          {
+            "Ref": "GrafanaWorkspaceServiceRoleCB4A19E2",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "GrafanaWorkspaceServiceAccountADFECCA8": {
+      "DeletionPolicy": "Delete",
+      "DependsOn": [
+        "GrafanaWorkspaceServiceAccountCustomResourcePolicyFC868178",
+      ],
+      "Metadata": {
+        "cdk_nag": {
+          "rules_to_suppress": [
+            {
+              "id": "AwsSolutions-L1",
+              "reason": "Custom resource Lambda runtime is managed by the CDK AwsCustomResource construct",
+            },
+            {
+              "id": "AwsSolutions-IAM5",
+              "reason": "Custom resource IAM policy is scoped to the specific Grafana workspace ARN with wildcard for service account sub-resources",
+            },
+          ],
+        },
+      },
+      "Properties": {
+        "Create": {
+          "Fn::Join": [
+            "",
+            [
+              "{"service":"Grafana","action":"createWorkspaceServiceAccount","parameters":{"workspaceId":"",
+              {
+                "Fn::GetAtt": [
+                  "GrafanaWorkspace5E61471A",
+                  "Id",
+                ],
+              },
+              "","grafanaRole":"ADMIN","name":"cdk-service-account"},"physicalResourceId":{"responsePath":"id"}}",
+            ],
+          ],
+        },
+        "Delete": {
+          "Fn::Join": [
+            "",
+            [
+              "{"service":"Grafana","action":"deleteWorkspaceServiceAccount","parameters":{"workspaceId":"",
+              {
+                "Fn::GetAtt": [
+                  "GrafanaWorkspace5E61471A",
+                  "Id",
+                ],
+              },
+              "","serviceAccountId":"PHYSICAL:RESOURCEID:"}}",
+            ],
+          ],
+        },
+        "InstallLatestAwsSdk": false,
+        "ServiceToken": {
+          "Fn::GetAtt": [
+            "AWS679f53fac002430cb0da5b7982bd22872D164C4C",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "Custom::AWS",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "GrafanaWorkspaceServiceAccountCustomResourcePolicyFC868178": {
+      "DeletionPolicy": "Delete",
+      "Metadata": {
+        "cdk_nag": {
+          "rules_to_suppress": [
+            {
+              "id": "AwsSolutions-L1",
+              "reason": "Custom resource Lambda runtime is managed by the CDK AwsCustomResource construct",
+            },
+            {
+              "id": "AwsSolutions-IAM5",
+              "reason": "Custom resource IAM policy is scoped to the specific Grafana workspace ARN with wildcard for service account sub-resources",
+            },
+          ],
+        },
+      },
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "grafana:CreateWorkspaceServiceAccount",
+                "grafana:DeleteWorkspaceServiceAccount",
+              ],
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:aws:grafana:eu-central-1:123456789012:/workspaces/",
+                      {
+                        "Fn::GetAtt": [
+                          "GrafanaWorkspace5E61471A",
+                          "Id",
+                        ],
+                      },
+                    ],
+                  ],
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:aws:grafana:eu-central-1:123456789012:/workspaces/",
+                      {
+                        "Fn::GetAtt": [
+                          "GrafanaWorkspace5E61471A",
+                          "Id",
+                        ],
+                      },
+                      "/*",
+                    ],
+                  ],
+                },
+              ],
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "GrafanaWorkspaceServiceAccountCustomResourcePolicyFC868178",
+        "Roles": [
+          {
+            "Ref": "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "GrafanaWorkspaceServiceAccountToken924DF02F": {
+      "DeletionPolicy": "Delete",
+      "DependsOn": [
+        "GrafanaWorkspaceServiceAccountTokenCustomResourcePolicyAB8C5C88",
+      ],
+      "Metadata": {
+        "cdk_nag": {
+          "rules_to_suppress": [
+            {
+              "id": "AwsSolutions-L1",
+              "reason": "Custom resource Lambda runtime is managed by the CDK AwsCustomResource construct",
+            },
+            {
+              "id": "AwsSolutions-IAM5",
+              "reason": "Custom resource IAM policy is scoped to the specific Grafana workspace ARN with wildcard for service account sub-resources",
+            },
+          ],
+        },
+      },
+      "Properties": {
+        "Create": {
+          "Fn::Join": [
+            "",
+            [
+              "{"service":"Grafana","action":"createWorkspaceServiceAccountToken","parameters":{"workspaceId":"",
+              {
+                "Fn::GetAtt": [
+                  "GrafanaWorkspace5E61471A",
+                  "Id",
+                ],
+              },
+              "","serviceAccountId":"",
+              {
+                "Fn::GetAtt": [
+                  "GrafanaWorkspaceServiceAccountADFECCA8",
+                  "id",
+                ],
+              },
+              "","name":"cdk-token","secondsToLive":2592000},"physicalResourceId":{"responsePath":"serviceAccountToken.id"}}",
+            ],
+          ],
+        },
+        "Delete": {
+          "Fn::Join": [
+            "",
+            [
+              "{"service":"Grafana","action":"deleteWorkspaceServiceAccountToken","parameters":{"workspaceId":"",
+              {
+                "Fn::GetAtt": [
+                  "GrafanaWorkspace5E61471A",
+                  "Id",
+                ],
+              },
+              "","serviceAccountId":"",
+              {
+                "Fn::GetAtt": [
+                  "GrafanaWorkspaceServiceAccountADFECCA8",
+                  "id",
+                ],
+              },
+              "","tokenId":"PHYSICAL:RESOURCEID:"}}",
+            ],
+          ],
+        },
+        "InstallLatestAwsSdk": false,
+        "ServiceToken": {
+          "Fn::GetAtt": [
+            "AWS679f53fac002430cb0da5b7982bd22872D164C4C",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "Custom::AWS",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "GrafanaWorkspaceServiceAccountTokenCustomResourcePolicyAB8C5C88": {
+      "DeletionPolicy": "Delete",
+      "Metadata": {
+        "cdk_nag": {
+          "rules_to_suppress": [
+            {
+              "id": "AwsSolutions-L1",
+              "reason": "Custom resource Lambda runtime is managed by the CDK AwsCustomResource construct",
+            },
+            {
+              "id": "AwsSolutions-IAM5",
+              "reason": "Custom resource IAM policy is scoped to the specific Grafana workspace ARN with wildcard for service account sub-resources",
+            },
+          ],
+        },
+      },
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "grafana:CreateWorkspaceServiceAccountToken",
+                "grafana:DeleteWorkspaceServiceAccountToken",
+              ],
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:aws:grafana:eu-central-1:123456789012:/workspaces/",
+                      {
+                        "Fn::GetAtt": [
+                          "GrafanaWorkspace5E61471A",
+                          "Id",
+                        ],
+                      },
+                    ],
+                  ],
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:aws:grafana:eu-central-1:123456789012:/workspaces/",
+                      {
+                        "Fn::GetAtt": [
+                          "GrafanaWorkspace5E61471A",
+                          "Id",
+                        ],
+                      },
+                      "/*",
+                    ],
+                  ],
+                },
+              ],
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "GrafanaWorkspaceServiceAccountTokenCustomResourcePolicyAB8C5C88",
+        "Roles": [
+          {
+            "Ref": "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "GrafanaWorkspaceServicePolicy144F8D5C": {
+      "DeletionPolicy": "Delete",
+      "Metadata": {
+        "cdk_nag": {
+          "rules_to_suppress": [
+            {
+              "id": "AwsSolutions-IAM5",
+              "is_reason_encoded": true,
+              "reason": "Q2xvdWRXYXRjaCwgQ2xvdWRXYXRjaCBMb2dzLCBhbmQgUmVzb3VyY2UgR3JvdXBzIFRhZ2dpbmcgcmVhZCBBUElzIGRvIG5vdCBzdXBwb3J0IHJlc291cmNlLWxldmVsIHBlcm1pc3Npb25zIOKAlCBSZXNvdXJjZTogIioiIGlzIHJlcXVpcmVk",
+            },
+          ],
+        },
+      },
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "cloudwatch:DescribeAlarmsForMetric",
+                "cloudwatch:DescribeAlarmHistory",
+                "cloudwatch:DescribeAlarms",
+                "cloudwatch:ListMetrics",
+                "cloudwatch:GetMetricData",
+                "cloudwatch:GetMetricStatistics",
+                "cloudwatch:GetInsightRuleReport",
+              ],
+              "Effect": "Allow",
+              "Resource": "*",
+              "Sid": "CloudWatchRead",
+            },
+            {
+              "Action": [
+                "logs:DescribeLogGroups",
+                "logs:GetLogGroupFields",
+                "logs:StartQuery",
+                "logs:StopQuery",
+                "logs:GetQueryResults",
+                "logs:GetLogEvents",
+              ],
+              "Effect": "Allow",
+              "Resource": "*",
+              "Sid": "LogsRead",
+            },
+            {
+              "Action": "tag:GetResources",
+              "Effect": "Allow",
+              "Resource": "*",
+              "Sid": "TagsRead",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "GrafanaWorkspaceServicePolicy144F8D5C",
+        "Roles": [
+          {
+            "Ref": "GrafanaWorkspaceServiceRoleCB4A19E2",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "GrafanaWorkspaceServiceRoleCB4A19E2": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "grafana.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "Description": "Service role for AWS Managed Grafana workspace",
+        "Tags": [
+          {
+            "Key": "Environment",
+            "Value": "prod",
+          },
+          {
+            "Key": "ManagedBy",
+            "Value": "CDK",
+          },
+          {
+            "Key": "Project",
+            "Value": "Grafana",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "ServiceAccountTokenSecretF772D609": {
+      "DeletionPolicy": "Delete",
+      "Metadata": {
+        "cdk_nag": {
+          "rules_to_suppress": [
+            {
+              "id": "AwsSolutions-SMG4",
+              "is_reason_encoded": true,
+              "reason": "VGhpcyBzZWNyZXQgc3RvcmVzIGEgR3JhZmFuYSBzZXJ2aWNlIGFjY291bnQgdG9rZW4gd2l0aCBhIGZpeGVkIFRUTCBtYW5hZ2VkIGJ5IHRoZSBHcmFmYW5hIEFQSSDigJQgYXV0b21hdGljIHJvdGF0aW9uIGlzIG5vdCBhcHBsaWNhYmxl",
+            },
+          ],
+        },
+      },
+      "Properties": {
+        "Description": "Grafana workspace service account token",
+        "Name": "grafana/prod/service-account-token",
+        "SecretString": {
+          "Fn::Join": [
+            "",
+            [
+              "{"token":"",
+              {
+                "Fn::GetAtt": [
+                  "GrafanaWorkspaceServiceAccountToken924DF02F",
+                  "serviceAccountToken.key",
+                ],
+              },
+              "","site_url":"https://",
+              {
+                "Fn::GetAtt": [
+                  "GrafanaWorkspace5E61471A",
+                  "Endpoint",
+                ],
+              },
+              "","workspace_id":"",
+              {
+                "Fn::GetAtt": [
+                  "GrafanaWorkspace5E61471A",
+                  "Id",
+                ],
+              },
+              ""}",
+            ],
+          ],
+        },
+        "Tags": [
+          {
+            "Key": "Environment",
+            "Value": "prod",
+          },
+          {
+            "Key": "ManagedBy",
+            "Value": "CDK",
+          },
+          {
+            "Key": "Project",
+            "Value": "Grafana",
+          },
+        ],
+      },
+      "Type": "AWS::SecretsManager::Secret",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "ServiceAccountTokenSecretPolicy712D2380": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "ResourcePolicy": {
+          "Statement": [
+            {
+              "Action": [
+                "secretsmanager:GetSecretValue",
+                "secretsmanager:DescribeSecret",
+              ],
+              "Condition": {
+                "ForAnyValue:StringLike": {
+                  "aws:PrincipalOrgPaths": [
+                    "o-testorg123/r-abcd/ou-abcd-prod1234/*",
+                    "o-testorg123/r-abcd/ou-abcd-sdlc5678/*",
+                  ],
+                },
+              },
+              "Effect": "Allow",
+              "Principal": "*",
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "SecretId": {
+          "Ref": "ServiceAccountTokenSecretF772D609",
+        },
+      },
+      "Type": "AWS::SecretsManager::ResourcePolicy",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "SsmEndpoint986CF28C": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "Description": "Grafana workspace endpoint URL",
+        "Name": "/grafana/prod/endpoint",
+        "Tags": {
+          "Environment": "prod",
+          "ManagedBy": "CDK",
+          "Project": "Grafana",
+        },
+        "Type": "String",
+        "Value": {
+          "Fn::GetAtt": [
+            "GrafanaWorkspace5E61471A",
+            "Endpoint",
+          ],
+        },
+      },
+      "Type": "AWS::SSM::Parameter",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "SsmSecretArnCFBA52ED": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "Description": "ARN of the Secrets Manager secret containing the service account token",
+        "Name": "/grafana/prod/secret-arn",
+        "Tags": {
+          "Environment": "prod",
+          "ManagedBy": "CDK",
+          "Project": "Grafana",
+        },
+        "Type": "String",
+        "Value": {
+          "Ref": "ServiceAccountTokenSecretF772D609",
+        },
+      },
+      "Type": "AWS::SSM::Parameter",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "SsmServiceRoleArn21E940BC": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "Description": "ARN of the Grafana service role (for cross-account trust policies)",
+        "Name": "/grafana/prod/service-role-arn",
+        "Tags": {
+          "Environment": "prod",
+          "ManagedBy": "CDK",
+          "Project": "Grafana",
+        },
+        "Type": "String",
+        "Value": {
+          "Fn::GetAtt": [
+            "GrafanaWorkspaceServiceRoleCB4A19E2",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "AWS::SSM::Parameter",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "SsmWorkspaceIdCE9D8F2A": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "Description": "Grafana workspace ID",
+        "Name": "/grafana/prod/workspace-id",
+        "Tags": {
+          "Environment": "prod",
+          "ManagedBy": "CDK",
+          "Project": "Grafana",
+        },
+        "Type": "String",
+        "Value": {
+          "Fn::GetAtt": [
+            "GrafanaWorkspace5E61471A",
+            "Id",
+          ],
+        },
+      },
+      "Type": "AWS::SSM::Parameter",
+      "UpdateReplacePolicy": "Delete",
+    },
+  },
+  "Rules": {
+    "CheckBootstrapVersion": {
+      "Assertions": [
+        {
+          "Assert": {
+            "Fn::Not": [
+              {
+                "Fn::Contains": [
+                  [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
+    },
+  },
+}
+`;
