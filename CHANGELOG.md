@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/), and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.1] - 2026-03-25
+
+### Added
+
+- README, CONTRIBUTING, SECURITY, and CHANGELOG documentation
+- Releasing guide with first-time publish instructions
+
+### Changed
+
+- Pinned GitHub Actions to commit SHAs for supply-chain security
+- Added least-privilege permissions to CI workflow
+- Gated Dependabot auto-merge to minor/patch only
+
 ## [0.1.0] - 2026-03-25
 
 ### Added

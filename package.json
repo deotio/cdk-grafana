@@ -1,6 +1,6 @@
 {
   "name": "@deotio/cdk-grafana",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "AWS CDK constructs for deploying and managing AWS Managed Grafana workspaces",
   "main": "dist/lib/index.js",
   "types": "dist/lib/index.d.ts",
