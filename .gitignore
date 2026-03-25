@@ -26,3 +26,5 @@ coverage/
 .doc-search-index
 .mcp.json
 .claude/
+.plans/
+plans/
